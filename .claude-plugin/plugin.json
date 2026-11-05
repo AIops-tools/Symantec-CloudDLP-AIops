@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "symantec-clouddlp-aiops",
+  "displayName": "Symantec Cloud DLP AIops",
+  "version": "0.1.0",
+  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "author": {
+    "name": "Wei Zhou",
+    "email": "zhouwei008@gmail.com",
+    "url": "https://github.com/AIops-tools"
+  },
+  "homepage": "https://github.com/AIops-tools/Symantec-CloudDLP-AIops",
+  "repository": "https://github.com/AIops-tools/Symantec-CloudDLP-AIops",
+  "license": "MIT",
+  "keywords": [
+    "symantec",
+    "cloud-dlp",
+    "cloudsoc",
+    "mcp",
+    "aiops"
+  ]
+}

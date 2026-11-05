@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.AIops-tools/symantec-clouddlp-aiops",
+  "title": "Symantec Cloud DLP AIops",
+  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "repository": {
+    "url": "https://github.com/AIops-tools/Symantec-CloudDLP-AIops",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "symantec-clouddlp-aiops",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

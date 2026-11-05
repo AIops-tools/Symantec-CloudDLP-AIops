@@ -1,0 +1,24 @@
+{
+  "id": "symantec-clouddlp-aiops",
+  "name": "Symantec Cloud DLP AIops",
+  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "skills": [
+    "./skills"
+  ],
+  "mcpServers": {
+    "symantec-clouddlp-aiops": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "symantec-clouddlp-aiops==0.1.0",
+        "symantec-clouddlp-aiops-mcp"
+      ]
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

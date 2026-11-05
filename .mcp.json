@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "symantec-clouddlp-aiops": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "symantec-clouddlp-aiops==0.1.0",
+        "symantec-clouddlp-aiops-mcp"
+      ]
+    }
+  }
+}
