@@ -39,7 +39,7 @@ mcp = MCPServer(
     "symantec-clouddlp-aiops",
     version=__version__,
     instructions=(
-        "Audited CloudDLP tenant, application, connector and policy read tools. "
+        "Audited Cloud DLP incident, profile, pattern and index read tools. "
         "No state-changing tools in this preview."
     ),
 )

@@ -1,7 +1,7 @@
 {
   "id": "symantec-clouddlp-aiops",
   "name": "Symantec Cloud DLP AIops",
-  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "description": "Governed Symantec Cloud DLP — 14 MCP tools, read-only with audit.",
   "skills": [
     "./skills"
   ],

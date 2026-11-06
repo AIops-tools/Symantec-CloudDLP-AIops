@@ -51,3 +51,22 @@ def test_missing_shape_is_error_and_write_route_rejected():
         ops.incidents(conn, "2026-01-01T00:00:00", "2026-01-02T00:00:00")
     with pytest.raises(ValueError, match="read operations"):
         conn.query("/public/profile", {"name": "bad"})
+
+
+def test_index_inventory_and_incident_matches_are_bounded():
+    seen = []
+
+    def handler(request):
+        if request.url.path == "/common/token":
+            return httpx.Response(200, json={"token": "t"})
+        seen.append(request.url.path)
+        if request.url.path == "/indices":
+            return httpx.Response(200, json=[{"id": 1}, {"id": 2}])
+        return httpx.Response(200, json=[{"messageComponentId": 1}, {"messageComponentId": 2}])
+
+    conn = ClouddlpConnection(
+        httpx.Client(base_url="https://app.elastica.net", transport=httpx.MockTransport(handler))
+    )
+    assert ops.indices(conn, limit=1)["truncated"] is True
+    assert ops.incident_matches(conn, 9, limit=1)["returned"] == 1
+    assert seen == ["/indices", "/api/clouddlp/v2/incidents/9/components/matches"]

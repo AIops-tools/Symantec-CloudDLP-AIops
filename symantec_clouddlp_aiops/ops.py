@@ -127,3 +127,58 @@ def incidents(
         "truncated": None,
         "completionKnown": False,
     }
+
+
+def reusable_patterns(conn: ClouddlpConnection, query: str = "") -> dict:
+    if len(query) > 200:
+        raise ValueError("query must be at most 200 characters")
+    return _data(conn, "/public/profile/reusable", {"query": query} if query else None)
+
+
+def reusable_pattern(conn: ClouddlpConnection, pattern_id: str, version: int = 0) -> dict:
+    if isinstance(version, bool) or not isinstance(version, int) or version < 0:
+        raise ValueError("version must be zero or greater")
+    return _data(
+        conn,
+        f"/public/profile/reusable/{_id(pattern_id)}",
+        {"version": version} if version else None,
+    )
+
+
+def indices(conn: ClouddlpConnection, index_type: str = "", limit: int = 100) -> dict:
+    if len(index_type) > 50 or not 1 <= limit <= 100:
+        raise ValueError("index_type must be bounded and limit 1–100")
+    data = conn.get("/indices", params={"type": index_type} if index_type else None)
+    if not isinstance(data, list) or any(not isinstance(row, dict) for row in data):
+        raise ClouddlpError("Cloud DLP returned an unexpected index list")
+    return {
+        "items": data[:limit],
+        "returned": min(len(data), limit),
+        "limit": limit,
+        "truncated": len(data) > limit,
+    }
+
+
+def index(conn: ClouddlpConnection, index_id: int) -> dict:
+    if isinstance(index_id, bool) or not isinstance(index_id, int) or index_id < 1:
+        raise ValueError("index_id must be positive")
+    data = conn.get(f"/indices/{index_id}")
+    if not isinstance(data, dict) or not data:
+        raise ClouddlpError("Cloud DLP returned an unexpected index detail")
+    return {"index": data}
+
+
+def incident_matches(conn: ClouddlpConnection, incident_id: int, limit: int = 100) -> dict:
+    if isinstance(incident_id, bool) or not isinstance(incident_id, int) or incident_id < 1:
+        raise ValueError("incident_id must be positive")
+    if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 100:
+        raise ValueError("limit must be 1–100")
+    data = conn.get(f"/api/clouddlp/v2/incidents/{incident_id}/components/matches")
+    if not isinstance(data, list) or any(not isinstance(row, dict) for row in data):
+        raise ClouddlpError("Cloud DLP returned an unexpected incident match list")
+    return {
+        "items": data[:limit],
+        "returned": min(len(data), limit),
+        "limit": limit,
+        "truncated": len(data) > limit,
+    }

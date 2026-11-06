@@ -1,7 +1,7 @@
 {
   "name": "@zw008/symantec-clouddlp-aiops",
   "version": "0.1.0",
-  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "description": "Governed Symantec Cloud DLP — 14 MCP tools, read-only with audit.",
   "private": true,
   "license": "MIT",
   "homepage": "https://github.com/AIops-tools/Symantec-CloudDLP-AIops",

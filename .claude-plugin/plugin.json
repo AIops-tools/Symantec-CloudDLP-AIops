@@ -3,7 +3,7 @@
   "name": "symantec-clouddlp-aiops",
   "displayName": "Symantec Cloud DLP AIops",
   "version": "0.1.0",
-  "description": "Governed Symantec Cloud DLP — 9 MCP tools, read-only with audit.",
+  "description": "Governed Symantec Cloud DLP — 14 MCP tools, read-only with audit.",
   "author": {
     "name": "Wei Zhou",
     "email": "zhouwei008@gmail.com",

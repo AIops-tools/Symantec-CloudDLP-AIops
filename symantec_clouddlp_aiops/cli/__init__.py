@@ -77,3 +77,28 @@ def main() -> None:
     except BudgetExceeded as exc:
         typer.echo(f"Budget stopped the operation: {exc}", err=True)
         raise typer.Exit(1) from exc
+
+
+@app.command("reusable-patterns")
+def reusable_patterns(query: str = "") -> None:
+    _emit(clouddlp.clouddlp_reusable_patterns(query))
+
+
+@app.command("reusable-pattern")
+def reusable_pattern(pattern_id: str, version: int = 0) -> None:
+    _emit(clouddlp.clouddlp_reusable_pattern(pattern_id, version))
+
+
+@app.command("indices")
+def indices(index_type: str = "", limit: int = 100) -> None:
+    _emit(clouddlp.clouddlp_indices(index_type, limit))
+
+
+@app.command("index")
+def index(index_id: int) -> None:
+    _emit(clouddlp.clouddlp_index(index_id))
+
+
+@app.command("incident-matches")
+def incident_matches(incident_id: int, limit: int = 100) -> None:
+    _emit(clouddlp.clouddlp_incident_matches(incident_id, limit))

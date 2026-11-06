@@ -10,6 +10,8 @@ from urllib.parse import urlsplit
 
 import httpx
 
+_MAX_RESPONSE_BYTES = 16 * 1024 * 1024
+
 
 class ClouddlpError(RuntimeError):
     def __init__(self, message: str, *, status_code: int | None = None) -> None:
@@ -112,6 +114,8 @@ class ClouddlpConnection:
             path.startswith("/public/profile/")
             or path == "/public/profile"
             or path.startswith("/api/clouddlp/v2/")
+            or path == "/indices"
+            or path.startswith("/indices/")
         ):
             raise ValueError("Undocumented CloudDLP resource path")
         if method != "GET" and (method != "POST" or not (path == "/api/clouddlp/v2/incidents")):
@@ -153,6 +157,8 @@ class ClouddlpConnection:
                         f"CloudDLP returned HTTP {response.status_code} for {path}. {hint}",
                         status_code=response.status_code,
                     )
+                if len(response.content) > _MAX_RESPONSE_BYTES:
+                    raise ClouddlpError("CloudDLP response exceeds 16 MiB; narrow the query")
                 if not response.content:
                     raise ClouddlpError(f"CloudDLP returned an empty response for {path}")
                 try:

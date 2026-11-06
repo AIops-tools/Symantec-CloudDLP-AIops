@@ -2,12 +2,12 @@
 name: symantec-clouddlp-aiops
 slug: symantec-clouddlp-aiops
 displayName: "Symantec Cloud DLP AIops"
-summary: "Audited CloudSOC DLP incidents, profiles, history, custom groups and data identifiers."
+summary: "Audited Cloud DLP incident, profile, pattern and index operations."
 license: MIT
 homepage: https://github.com/AIops-tools/Symantec-CloudDLP-AIops
 tags: [aiops, mcp, governance, symantec, clouddlp]
 description: >
-  Use for read-only CloudSOC DLP incidents, profiles, history, custom groups and data identifiers. This is the Symantec Cloud DLP product line.
+  Use for read-only Symantec Cloud DLP incidents, profile and detection content, custom groups, data identifiers and index health.
 installer:
   kind: uv
   package: symantec-clouddlp-aiops
@@ -20,3 +20,5 @@ metadata: {"openclaw":{"requires":{"anyBins":["uvx"]},"optional":{"env":["SYMANT
 # Symantec Cloud DLP AIops
 
 Start with `symantec-clouddlp-aiops profiles`. Search incidents in a bounded time window and follow the search-after cursor. Profile API response schemas are weakly specified, so raw response shape is surfaced explicitly. No configuration writes are exposed. Read the [verification status](../../docs/VERIFICATION.md) before interpreting an empty or incomplete response.
+
+See the [operations catalog](../../docs/OPERATIONS.md) for every tool and its verification limits.
