@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "symantec-clouddlp-aiops",
   "displayName": "Symantec Cloud DLP AIops",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Governed Symantec Cloud DLP — 14 MCP tools, read-only with audit.",
   "author": {
     "name": "Wei Zhou",

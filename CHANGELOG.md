@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.1 — 2026-11-14
+
+- Explain Cloud DLP profile, incident and index query parameters and unverified response shapes in the MCP schema.
+
 ## v0.1.0 — initial read-only preview
 
 - Stream login and resource responses; abort and close the response at the 16 MiB decoded-body limit.
